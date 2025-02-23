@@ -3,12 +3,15 @@ const UserProfile = (props) => {
         <div style={{
             backgroundColor:'navy',
             color:'white',
-            padding:'5px',
-            border:'1px solid white',
+            margin:"10px",
+            padding:'10px',
+            border:'1px solid gray',
             borderRadius: "15px"
         }}>
-            <h2>{props.name}</h2>
-            <p>Age: {props.age}</p>
+            <h2 style={{
+                color:'white'
+            }}>{props.name}</h2>
+            <p >Age: <span style={{fontWeight:'bold'}}>{props.age}</span></p>
             <p>Bio: {props.bio}</p>
         </div>
 
