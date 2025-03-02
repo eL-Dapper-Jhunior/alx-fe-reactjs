@@ -5,7 +5,7 @@ import useRecipeStore from './components/recipeStore'
 import RecipeList from './components/RecipeList'
 import AddRecipeForm from './components/AddRecipeForm'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-omport 
+import SearchBar from './components/SearchBar';
 import './App.css'
 import DeleteRecipeButton from './components/DeleteRecipeButton'
 import EditRecipeForm from './components/EditRecipeForm'
@@ -42,6 +42,7 @@ function App() {
         <nav>
           <Link to="/">Home</Link>
         </nav>
+        <SearchBar />
         <Routes>
           <Route
             path="/"
@@ -56,7 +57,6 @@ function App() {
         </Routes>
       </div>
     </Router>
-
   
       <AddRecipeForm />
       <DeleteRecipeButton />
