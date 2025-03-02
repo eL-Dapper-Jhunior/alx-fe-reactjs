@@ -10,6 +10,11 @@ import './App.css'
 import DeleteRecipeButton from './components/DeleteRecipeButton'
 import EditRecipeForm from './components/EditRecipeForm'
 import RecipeDetails from './components/RecipeDetails'
+import FavoritesList from './components/FavoritesList';
+import RecommendationsList from './components/RecommendationsList';
+
+
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -41,6 +46,7 @@ function App() {
         <h1>Recipe Sharing App</h1>
         <nav>
           <Link to="/">Home</Link>
+          <Link to="/favorites">Favorites</Link>
         </nav>
         <SearchBar />
         <Routes>
@@ -50,14 +56,17 @@ function App() {
               <>
                 <AddRecipeForm />
                 <RecipeList />
+                <RecommendationsList />
               </>
             }
           />
+          <Route path="/favorites" element={<FavoritesList />} />
           <Route path="/recipe/:recipeId" element={<RecipeDetails />} />
         </Routes>
       </div>
     </Router>
-  
+      <RecommendationsList />
+      <FavoritesList />
       <AddRecipeForm />
       <DeleteRecipeButton />
       <EditRecipeForm />
