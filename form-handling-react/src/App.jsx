@@ -1,7 +1,8 @@
 // src/App.jsx
 import React from "react";
 import RegistrationForm from "./components/RegistrationForm";
-import FormikForm from "../components/formikForm";
+import FormikForm from "./components/formikForm"; // Import the FormikForm component
+
 function App() {
   return (
     <div className="App">
