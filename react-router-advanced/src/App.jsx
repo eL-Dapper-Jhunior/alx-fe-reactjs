@@ -1,17 +1,24 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import Users from "./components/Users";
-import UserProfile from "./components/UserProfile";
-import BlogPost from "./components/BlogPost"; // Import BlogPost component
+import Profile from "./components/Profile";
+import Login from "./components/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/users/:userId" element={<UserProfile />} />
-        <Route path="/blog/:id" element={<BlogPost />} /> {/* Add BlogPost Route */}
+        <Route path="/login" element={<Login />} />
+        {/* Protected route for Profile */}
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );
