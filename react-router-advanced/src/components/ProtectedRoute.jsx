@@ -1,10 +1,9 @@
-import { Navigate } from "react-router-dom";
-import useAuth from "../hooks/useAuth"; // Import useAuth hook
+import { Navigate, Outlet } from "react-router-dom";
 
-const ProtectedRoute = ({ children }) => {
-  const isAuthenticated = useAuth(); // Check if user is authenticated
+const isAuthenticated = false; // Change to true to allow access
 
-  return isAuthenticated ? children : <Navigate to="/login" />; // Redirect if not authenticated
+const ProtectedRoute = () => {
+  return isAuthenticated ? <Outlet /> : <Navigate to="/" />;
 };
 
 export default ProtectedRoute;
