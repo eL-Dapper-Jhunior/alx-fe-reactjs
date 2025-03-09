@@ -1,39 +1,34 @@
-// src/components/RegistrationForm.jsx
 import React, { useState } from "react";
-
 const RegistrationForm = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     // Basic validation
-    if (!formData.username || !formData.email || !formData.password) {
+    if (!username || !email || !password) {
       alert("All fields are required!");
       return;
     }
-
     // Simulate API call
-    console.log("Form Data Submitted:", formData);
-
+    console.log("Form Data Submitted:", { username, email, password });
     // Reset form
-    setFormData({
-      username: "",
-      email: "",
-      password: "",
-    });
+    setUsername("");
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -44,8 +39,8 @@ const RegistrationForm = () => {
           type="text"
           id="username"
           name="username"
-          value={formData.username}
-          onChange={handleChange}
+          value={username} // Direct binding to username state
+          onChange={handleUsernameChange}
         />
       </div>
       <div>
@@ -54,8 +49,8 @@ const RegistrationForm = () => {
           type="email"
           id="email"
           name="email"
-          value={formData.email}
-          onChange={handleChange}
+          value={email} // Direct binding to email state
+          onChange={handleEmailChange}
         />
       </div>
       <div>
@@ -64,13 +59,12 @@ const RegistrationForm = () => {
           type="password"
           id="password"
           name="password"
-          value={formData.password}
-          onChange={handleChange}
+          value={password} // Direct binding to password state
+          onChange={handlePasswordChange}
         />
       </div>
       <button type="submit">Register</button>
     </form>
   );
 };
-
 export default RegistrationForm;
