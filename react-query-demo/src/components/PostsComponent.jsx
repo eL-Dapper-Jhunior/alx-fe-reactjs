@@ -13,13 +13,13 @@ const PostsComponent = () => {
   });
 
   if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;  // ✅ Correct error handling
+  if (error) return <p style={{ color: "red" }}>Error: {error.message}</p>; // ✅ Correct error handling
 
   return (
     <div>
       <button onClick={() => refetch()}>Refresh Posts</button>
       <ul>
-        {posts.map((post) => (
+        {posts?.map((post) => (
           <li key={post.id}>
             <strong>{post.title}</strong>
             <p>{post.body}</p>
