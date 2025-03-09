@@ -7,13 +7,19 @@ const fetchPosts = async () => {
 };
 
 const PostsComponent = () => {
-  const { data: posts, error, isLoading, refetch } = useQuery({
+  const {
+    data: posts,
+    error,
+    isLoading,
+    isError, // Add isError property
+    refetch,
+  } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchPosts,
   });
 
   if (isLoading) return <p>Loading...</p>;
-  if (error) return <p style={{ color: "red" }}>Error: {error.message}</p>; // ✅ Correct error handling
+  if (isError) return <p style={{ color: "red" }}>Error: {error.message}</p>; // Use isError for error handling
 
   return (
     <div>
