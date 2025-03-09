@@ -13,7 +13,7 @@ const PostsComponent = () => {
   });
 
   if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error fetching posts!</p>;
+  if (error) return <p>Error: {error.message}</p>;  // ✅ Correct error handling
 
   return (
     <div>
