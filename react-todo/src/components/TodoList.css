@@ -1,0 +1,30 @@
+/* src/components/TodoList.css */
+.todo-list {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .todos {
+    margin-top: 20px;
+  }
+  
+  .todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .todo:last-child {
+    border-bottom: none;
+  }
+  
+  .empty-message {
+    text-align: center;
+    color: #888;
+  }

@@ -1,28 +1,21 @@
-import React, { useState } from "react";
+// src/components/Todo.jsx
+import React from "react";
 
-const AddTodoForm = ({ addTodo }) => {
-  const [input, setInput] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (input.trim()) {
-      addTodo(input.trim());
-      setInput("");
-    }
-  };
-
+const Todo = ({ todo, toggleTodo, deleteTodo }) => {
   return (
-    <form onSubmit={handleSubmit} className="add-todo-form">
-      <input
-        type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Add a new todo..."
-        data-testid="todo-input"
-      />
-      <button type="submit" data-testid="add-button">Add Todo</button>
-    </form>
+    <div className="todo">
+      <span
+        style={{
+          textDecoration: todo.completed ? "line-through" : "none",
+          cursor: "pointer",
+        }}
+        onClick={() => toggleTodo(todo.id)}
+      >
+        {todo.text}
+      </span>
+      <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+    </div>
   );
 };
 
-export default AddTodoForm;
+export default Todo;
