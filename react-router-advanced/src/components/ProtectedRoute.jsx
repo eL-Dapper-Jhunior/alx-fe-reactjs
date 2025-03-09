@@ -1,9 +1,12 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-const isAuthenticated = false; // Change to true to allow access
+// Simulated authentication function
+const isAuthenticated = () => {
+  return localStorage.getItem("auth") === "true"; // Change to "false" to test redirection
+};
 
-const ProtectedRoute = () => {
-  return isAuthenticated ? <Outlet /> : <Navigate to="/" />;
+const ProtectedRoute = ({ children }) => {
+  return isAuthenticated() ? children : <Navigate to="/" />;
 };
 
 export default ProtectedRoute;
