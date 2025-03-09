@@ -11,15 +11,19 @@ const PostsComponent = () => {
     data: posts,
     error,
     isLoading,
-    isError, // Add isError property
+    isError,
     refetch,
   } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchPosts,
+    cacheTime: 5 * 60 * 1000, // Cache data for 5 minutes
+    staleTime: 1 * 60 * 1000, // Data is considered fresh for 1 minute
+    refetchOnWindowFocus: true, // Refetch data when the window is focused
+    keepPreviousData: true, // Keep previous data while fetching new data
   });
 
   if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p style={{ color: "red" }}>Error: {error.message}</p>; // Use isError for error handling
+  if (isError) return <p style={{ color: "red" }}>Error: {error.message}</p>;
 
   return (
     <div>
