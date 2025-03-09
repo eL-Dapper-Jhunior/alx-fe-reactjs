@@ -2,12 +2,14 @@
 import React, { useState } from 'react';
 
 const RegistrationForm = () => {
+  // State to manage form data
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: '',
   });
 
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -16,6 +18,7 @@ const RegistrationForm = () => {
     });
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.username || !formData.email || !formData.password) {
@@ -39,7 +42,7 @@ const RegistrationForm = () => {
           type="text"
           id="username"
           name="username"
-          value={formData.username}
+          value={formData.username} // Bind to state
           onChange={handleChange}
         />
       </div>
@@ -49,7 +52,7 @@ const RegistrationForm = () => {
           type="email"
           id="email"
           name="email"
-          value={formData.email}
+          value={formData.email} // Bind to state
           onChange={handleChange}
         />
       </div>
@@ -59,7 +62,7 @@ const RegistrationForm = () => {
           type="password"
           id="password"
           name="password"
-          value={formData.password}
+          value={formData.password} // Bind to state
           onChange={handleChange}
         />
       </div>
