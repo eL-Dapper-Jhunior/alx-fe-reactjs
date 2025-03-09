@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
 
 const RegistrationForm = () => {
- 
+  // State for form fields
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: ''
   });
   
-  
+  // State for form submission status
   const [status, setStatus] = useState({
     submitting: false,
     error: null,
     success: false
   });
   
- 
+  // State for validation errors
   const [errors, setErrors] = useState({});
   
-  
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -26,7 +26,7 @@ const RegistrationForm = () => {
       [name]: value
     });
     
-   
+    // Clear error for this field when user starts typing
     if (errors[name]) {
       setErrors({
         ...errors,
@@ -35,7 +35,7 @@ const RegistrationForm = () => {
     }
   };
   
-  
+  // Validate form
   const validateForm = () => {
     const newErrors = {};
     
@@ -59,11 +59,11 @@ const RegistrationForm = () => {
     return Object.keys(newErrors).length === 0;
   };
   
-
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-  
+    // Validate form
     if (!validateForm()) {
       return;
     }
@@ -71,7 +71,7 @@ const RegistrationForm = () => {
     setStatus({ submitting: true, error: null, success: false });
     
     try {
-     
+      // Simulate API call
       const response = await new Promise((resolve) => {
         setTimeout(() => {
           resolve({
@@ -85,7 +85,7 @@ const RegistrationForm = () => {
       
       if (response.ok) {
         setStatus({ submitting: false, error: null, success: true });
-  n
+        // Reset form after successful submission
         setFormData({ username: '', email: '', password: '' });
         console.log('Registration successful:', data);
       } else {
@@ -120,6 +120,7 @@ const RegistrationForm = () => {
             type="text"
             id="username"
             name="username"
+            value={formData.username}
             onChange={handleChange}
             className={errors.username ? 'error' : ''}
           />
@@ -132,6 +133,7 @@ const RegistrationForm = () => {
             type="email"
             id="email"
             name="email"
+            value={formData.email}
             onChange={handleChange}
             className={errors.email ? 'error' : ''}
           />
@@ -144,6 +146,7 @@ const RegistrationForm = () => {
             type="password"
             id="password"
             name="password"
+            value={formData.password}
             onChange={handleChange}
             className={errors.password ? 'error' : ''}
           />
