@@ -22,7 +22,6 @@ const RegistrationForm = () => {
       alert('All fields are required!');
       return;
     }
-    // Simulate API call
     console.log('Form Data Submitted:', formData);
     // Reset form
     setFormData({
