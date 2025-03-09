@@ -1,24 +1,14 @@
-
-import './App.css'
-import RegistrationForm from './components/RegistrationForm'
-import FormikForm from './components/formikForm'
-
+import ControlledForm from "./components/ControlledForm";
+import FormikForm from "./components/FormikForm";
 
 function App() {
-  // const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        
-        <h1>User Registratiion</h1>
-        <RegistrationForm />
-
-        <h1>User Registration</h1>
+    <div>
+      <h1>Controlled Form</h1>
+      <ControlledForm />
+      <h1>Formik Form</h1>
       <FormikForm />
-      </div>
-      
-    </>
+    </div>
   );
 }
 
