@@ -20,11 +20,11 @@ const RecipeDetail = () => {
   return (
     <div className="p-4">
       <h1 className="text-3xl font-bold text-center mb-8">{recipe.title}</h1>
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6"> {/* Added shadow and padding */}
         <img
           src={recipe.image}
           alt={recipe.title}
-          className="w-full h-64 object-cover rounded-lg"
+          className="w-full h-64 object-cover rounded-lg shadow-md" // Added shadow
         />
         <div className="mt-6">
           <h2 className="text-xl font-semibold mb-2">Ingredients</h2>
