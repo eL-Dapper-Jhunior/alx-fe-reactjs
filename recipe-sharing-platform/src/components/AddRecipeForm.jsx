@@ -5,7 +5,7 @@ const AddRecipeForm = () => {
   const [formData, setFormData] = useState({
     title: "",
     ingredients: "",
-    instructions: "",
+    steps: "", // Added steps field
   });
 
   // State to track validation errors
@@ -13,10 +13,10 @@ const AddRecipeForm = () => {
 
   // Handle input changes
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target; // Destructure name and value from the event target
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: value, // Update the corresponding field in the state
     });
   };
 
@@ -32,7 +32,7 @@ const AddRecipeForm = () => {
       // If no errors, submit the form (for now, just log the data)
       console.log("Form submitted:", formData);
       alert("Recipe added successfully!");
-      setFormData({ title: "", ingredients: "", instructions: "" }); // Clear the form
+      setFormData({ title: "", ingredients: "", steps: "" }); // Clear the form
       setErrors({}); // Clear errors
     }
   };
@@ -48,8 +48,8 @@ const AddRecipeForm = () => {
     } else if (data.ingredients.split(",").length < 2) {
       errors.ingredients = "Please enter at least 2 ingredients";
     }
-    if (!data.instructions.trim()) {
-      errors.instructions = "Instructions are required";
+    if (!data.steps.trim()) {
+      errors.steps = "Preparation steps are required"; // Updated to use steps
     }
     return errors;
   };
@@ -68,7 +68,7 @@ const AddRecipeForm = () => {
             id="title"
             name="title"
             value={formData.title}
-            onChange={handleInputChange}
+            onChange={handleInputChange} // Uses target.value internally
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
           />
           {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
@@ -83,7 +83,7 @@ const AddRecipeForm = () => {
             id="ingredients"
             name="ingredients"
             value={formData.ingredients}
-            onChange={handleInputChange}
+            onChange={handleInputChange} // Uses target.value internally
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
             rows="3"
           />
@@ -92,21 +92,21 @@ const AddRecipeForm = () => {
           )}
         </div>
 
-        {/* Instructions */}
+        {/* Preparation Steps */}
         <div>
-          <label htmlFor="instructions" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="steps" className="block text-sm font-medium text-gray-700">
             Preparation Steps
           </label>
           <textarea
-            id="instructions"
-            name="instructions"
-            value={formData.instructions}
-            onChange={handleInputChange}
+            id="steps"
+            name="steps"
+            value={formData.steps}
+            onChange={handleInputChange} // Uses target.value internally
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-500"
             rows="5"
           />
-          {errors.instructions && (
-            <p className="text-red-500 text-sm mt-1">{errors.instructions}</p>
+          {errors.steps && (
+            <p className="text-red-500 text-sm mt-1">{errors.steps}</p>
           )}
         </div>
 
